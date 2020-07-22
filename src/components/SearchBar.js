@@ -4,8 +4,12 @@ class SearchBar extends React.Component {
 
     state = {term: ''};
 
-    onFormSubmit(event){
+    // We need an arrow function below to fix the 'this' binding issue with js.
+    // Without arrow function, 'this' will be undefined inside the function
+
+    onFormSubmit = (event) => {
         event.preventDefault();
+        this.props.onSubmit(this.state.term);
     }
 
     render(){
